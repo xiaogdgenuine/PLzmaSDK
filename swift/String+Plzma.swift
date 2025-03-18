@@ -30,7 +30,7 @@ import Foundation
 internal extension String {
     
     init(utf8CString ptr: UnsafePointer<Int8>?) {
-        if let ptr = ptr {
+        if let ptr = ptr, let _ = String(cString: ptr, encoding: .utf8) {
             self.init(cString: ptr, encoding: .utf8)!
         } else {
             self.init()
